@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 # Настраиваем логирование
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def get_data_from_google(query, num_results=5):
+def get_data_from_google(query, num_results=1):
     """
     Выполняет поиск в Google, извлекает текст из первых результатов и возвращает результаты.
 

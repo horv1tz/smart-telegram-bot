@@ -1,15 +1,15 @@
 from gigachat import GigaChat
 
-KEY="eyJjdHkiOiJqd3QiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.wKUbBqRG0awQoQrST-hgeI7lJ9zZkBHPNfej8QQbZhFnA3zyVzizTZZ-YTd5YAwjcEKxsPQahPrnacN41bI6exkQ4wgX-spNCvr0ea6xd4vOXyJAGPK6n_qvatIfijVFREOtfKObMHjPlQI_O6St-0PKT1AEdYVZXbCXdcUO55GTQyBFy2RIgYGsj92J5Ifb3Jg0m_zoP_6qoBVrO2_YCEqM2QPt2ZAqVE_YgIuAcw2-SQGtJeXpHE8wHBdTWc8XnmNhjIlS-qtSluhwsENOM17ZD8o2joA2KwEAEEaSMyc8HqqFYX0XhF0KYXZtzdDn9oKLQjkqZSETmguNLAN90g.qbdU_C6mUfUaB9yXTEr0Aw.rvJ3R3HRngj_K8gOrnA3C-_1l61UD4hFxh98hFaYadZHpuR-lyVot_HdvNLYRT0HUILpOzKlmwABktGaMn-Xd7_og0QcZgaiXOPNpX12g7-UX38p3PofSW9O8Vo5rNhYz0oy4qt56CJgTvzJiIi5VEP3LyMiE2KVwK_QePsgPCGKa6My2zS_CEhfnFYf-DVrvUU75KcivdelfW3t3qbtiybmH1c6dEtL0zbesui2NcOA9d5nQuJlUILhnZiPyP9pnW8V96aRqTcxwsxPl-HgGs3I0F07d2JCQn4l6GTTxnLMJjgIWBGKdNqesclkUeEXLtGBsKN5boSFQhZS4OXi5leuu7q2GRoLOLiZw7N0joWV29N9y3RwE8ejJqkZcsrks34QlmzR72TD5MUZYhGNT88-59BMVGTmefYAUY6ug0StfFU4auu_c1_H2iS0bFkHcpfcukbUO2AnXJC0Iy7KMOk3Us1kywk5aJCfwrpyesDwnd8p9fwVHhSicXJoSWi7Iiy8LmQWU45TG1DQ01zMQIWw1rWrjxkcTyGfv4-VHfvvTc7b6l_3PY-TgwwpI2sDQ2NrvgqL9qKcaaocWlnILhsLY4L3XIdQU12bH-8OFszCYV_GAsAWWHLjuI1P69brezpjV-J-g3Wh4lcA-FJ_ki5C5xLiZROM6VGHgBIZLP0HO85hJGk-14m3eCtrJAqE-mmfA5mT-Nmss8avMuSXC_4fGb1sEz06N3q-LCl84cw.Df5XIx9NZQr0IPs1VGqnCzkF-m-rt3TtnawS5u7h-78"
 # Инициализация клиента с вашим API ключом
 giga = GigaChat(access_token=KEY, verify_ssl_certs=False)
 
-def handle_data_by_gigachat(query):
+def handle_data_by_gigachat(query, search):
     # Пример запроса к GigaChat
     prompt = "Ты умный помощник Дворф.\n Ты должен максимально точно отвечать на вопрос:\n"
     query_chat = f"Запрос пользователя: {query} \n"
+    search_chat = f"Поиск в поисковике: {search}"
 
-    response_text = prompt + query_chat
+    response_text = prompt + query_chat + search_chat
     response = giga.chat(response_text)
     return response.choices[0].message.content
 
