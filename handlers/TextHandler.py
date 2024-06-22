@@ -1,14 +1,15 @@
-from app import dp
-from aiogram.types import Message, FSInputFile
+from aiogram import types
 from aiogram.enums import ParseMode
 from aiogram.fsm.context import FSMContext
+from aiogram.types import FSInputFile
 from gtts import gTTS
 from utils import handle_data
+from app import dp
 import os
 import re
 
 @dp.message()
-async def start(message: Message, state: FSMContext):
+async def start(message: types.Message, state: FSMContext):
     # Отправляем сообщение и сохраняем его идентификатор
     waiting_message = await message.answer("Пожалуйста подождите...")
 
@@ -18,7 +19,7 @@ async def start(message: Message, state: FSMContext):
         await message.answer('Я пока что так не умею')
     else:
         # Обработка запроса с помощью GigaChat
-        response_ai = handle_data(query=message.text)
+        response_ai = handle_data(query=message.text, chat_history=[])
 
         # Создание аудиофайла с озвучкой ответа
         tts = gTTS(re.sub(r'[=#\|\-*`]+', '', response_ai), lang='ru')
